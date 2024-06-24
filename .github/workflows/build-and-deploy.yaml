@@ -1,0 +1,35 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+    - 'master'
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.44.4
+
+      - name: Cache Deno
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-deno-v1
+        with:
+          path: ~/.cache/deno
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('deno.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.cache-name }}
+
+      - name: Build
+        run: deno task build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
