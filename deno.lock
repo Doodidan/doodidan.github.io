@@ -2,11 +2,54 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "jsr:@std/cli@^0.224.7": "jsr:@std/cli@0.224.7",
+      "jsr:@std/encoding@1.0.0-rc.2": "jsr:@std/encoding@1.0.0-rc.2",
+      "jsr:@std/fmt@^0.225.4": "jsr:@std/fmt@0.225.4",
+      "jsr:@std/http": "jsr:@std/http@0.224.5",
+      "jsr:@std/media-types@^1.0.0-rc.1": "jsr:@std/media-types@1.0.0-rc.1",
+      "jsr:@std/net@^0.224.3": "jsr:@std/net@0.224.3",
+      "jsr:@std/path@1.0.0-rc.2": "jsr:@std/path@1.0.0-rc.2",
+      "jsr:@std/streams@^0.224.5": "jsr:@std/streams@0.224.5",
       "npm:esbuild-svelte@0.8.1": "npm:esbuild-svelte@0.8.1_esbuild@0.21.5_svelte@4.2.18",
       "npm:sass@1.77.6": "npm:sass@1.77.6",
-      "npm:svelte-preprocess@6.0.1": "npm:svelte-preprocess@6.0.1_sass@1.77.6_svelte@4.2.18_typescript@5.5.2",
+      "npm:svelte-preprocess@6.0.1": "npm:svelte-preprocess@6.0.1_svelte@4.2.18",
       "npm:svelte@4.2.18": "npm:svelte@4.2.18",
       "npm:typescript@5.5.2": "npm:typescript@5.5.2"
+    },
+    "jsr": {
+      "@std/cli@0.224.7": {
+        "integrity": "654ca6477518e5e3a0d3fabafb2789e92b8c0febf1a1d24ba4b567aba94b5977"
+      },
+      "@std/encoding@1.0.0-rc.2": {
+        "integrity": "160d7674a20ebfbccdf610b3801fee91cf6e42d1c106dd46bbaf46e395cd35ef"
+      },
+      "@std/fmt@0.225.4": {
+        "integrity": "584c681cf422b70e28959b57e59012823609c087384cbf12d05f67814797fda3"
+      },
+      "@std/http@0.224.5": {
+        "integrity": "b03b5d1529f6c423badfb82f6640f9f2557b4034cd7c30655ba5bb447ff750a4",
+        "dependencies": [
+          "jsr:@std/cli@^0.224.7",
+          "jsr:@std/encoding@1.0.0-rc.2",
+          "jsr:@std/fmt@^0.225.4",
+          "jsr:@std/media-types@^1.0.0-rc.1",
+          "jsr:@std/net@^0.224.3",
+          "jsr:@std/path@1.0.0-rc.2",
+          "jsr:@std/streams@^0.224.5"
+        ]
+      },
+      "@std/media-types@1.0.0-rc.1": {
+        "integrity": "ff3cc8d5b536be2730fc4d446865007faf69bf4d46e7bea426d5e1d9c6ba9053"
+      },
+      "@std/net@0.224.3": {
+        "integrity": "a6257b9a35a4f299a0a9d4a4b76aef1f90ad05572374c5267c6c51a2ec41dfba"
+      },
+      "@std/path@1.0.0-rc.2": {
+        "integrity": "39f20d37a44d1867abac8d91c169359ea6e942237a45a99ee1e091b32b921c7d"
+      },
+      "@std/streams@0.224.5": {
+        "integrity": "bcde7818dd5460d474cdbd674b15f6638b9cd73cd64e52bd852fba2bd4d8ec91"
+      }
     },
     "npm": {
       "@ampproject/remapping@2.3.0": {
@@ -356,14 +399,12 @@
           "min-indent": "min-indent@1.0.1"
         }
       },
-      "svelte-preprocess@6.0.1_sass@1.77.6_svelte@4.2.18_typescript@5.5.2": {
+      "svelte-preprocess@6.0.1_svelte@4.2.18": {
         "integrity": "sha512-vNgXoyqWwahdpEX9XbQHcAHt41TkXnf8bRDxT5PjISHbZD1dVH4b2OsJ2fVQTBb3qP05x0GuYE9iS5vhD+Dniw==",
         "dependencies": {
           "detect-indent": "detect-indent@6.1.0",
-          "sass": "sass@1.77.6",
           "strip-indent": "strip-indent@3.0.0",
-          "svelte": "svelte@4.2.18",
-          "typescript": "typescript@5.5.2"
+          "svelte": "svelte@4.2.18"
         }
       },
       "svelte@4.2.18": {
@@ -499,6 +540,9 @@
     "https://deno.land/x/denoflate@1.2.1/pkg/denoflate_bg.wasm.js": "d581956245407a2115a3d7e8d85a9641c032940a8e810acbd59ca86afd34d44d",
     "https://deno.land/x/esbuild@v0.21.5/mod.js": "f391d2907ca95fff70cc0bea3eb690d1687d069e6559cad1017af942f7b76d4d",
     "https://deno.land/x/refresh@1.0.0/client.js": "43a905d4859273350206e0a391b4020d8a63448fd47d58bee21291c6981617ef",
+    "https://deno.land/x/refresh@1.0.0/mod.ts": "4cdfcbeec4c7322dd09e90171272b3c03b3826b0fb813a51758682f342461607",
+    "https://deno.land/x/simple_exec@1.0.1/lib/simple_exec.ts": "245188c25135bbf26c53f1cb5dcc9cb12a4661241a8683e471f50c915f9dbcba",
+    "https://deno.land/x/simple_exec@1.0.1/mod.ts": "8a4d2efb253c32a81858dc07adcc819d21369f3b3ef283935bd9b294a9ef0fdd",
     "https://esm.sh/esbuild-plugin-browserslist@0.12.1": "1e05a7ba802fb2ee922bf9f1b5db6c6bba27ffecfcc5759434c50ba04a81b60e",
     "https://esm.sh/v135/browserslist@4.23.1/es2022/browserslist.mjs": "398261e14083db1c107dde4c28e6beab8eb56264a243bee701607b7d9160475f",
     "https://esm.sh/v135/caniuse-lite@1.0.30001629/es2022/dist/unpacker/agents.js": "b9c451403721297ff6da5029e26c34fd41074168f262dd76bc1b39e7a2a4c917",

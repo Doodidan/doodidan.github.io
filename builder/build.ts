@@ -1,5 +1,3 @@
-// TODO: browserlist
-
 import { copy, emptyDir } from '/deps/dev/fs.ts';
 import { context, stop } from '/deps/dev/esbuild.ts';
 
