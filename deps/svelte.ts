@@ -1,1 +1,1 @@
-export * from 'npm:svelte@4.2.18';
+import 'npm:svelte@4.2.18';

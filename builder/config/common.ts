@@ -1,12 +1,13 @@
 import { join } from '/deps/dev/path.ts';
 import type { BuildOptions } from '/deps/dev/esbuild.ts';
-import sveltePlugin from '/deps/dev/esbuild-svelte.ts';
+import esbuildSvelte from '/deps/dev/esbuild-svelte.ts';
 import { sveltePreprocess } from '/deps/dev/svelte-preprocess.ts';
 
 export const SRC_DIR = 'src';
-export const ENTRY_FILE = 'main.ts';
-export const HTML_FILE = 'index.html';
+export const PUBLIC_DIR = 'public';
+export const COPY_DIR_LIST = [join(PUBLIC_DIR, 'common')];
 export const DIST_DIR = 'dist';
+export const ENTRY_FILE = 'index.ts';
 export const CONFIG: BuildOptions = {
   entryPoints: [join(SRC_DIR, ENTRY_FILE)],
   bundle: true,
@@ -16,7 +17,8 @@ export const CONFIG: BuildOptions = {
   splitting: true,
   format: `esm`,
   plugins: [
-    (sveltePlugin as unknown as Function)({
+    // @ts-expect-error: esbuildSvelte is callable in fact, it's deno-ts error
+    esbuildSvelte({
       preprocess: sveltePreprocess(),
     }),
   ],
