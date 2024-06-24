@@ -3,8 +3,6 @@
 import { copy, emptyDir } from '/deps/dev/fs.ts';
 import { context, stop } from '/deps/dev/esbuild.ts';
 
-import '/deps/index.ts';
-
 import * as prodConfig from './config/production.ts';
 import * as devConfig from './config/development.ts';
 

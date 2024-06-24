@@ -2,6 +2,8 @@ import { join } from '/deps/dev/path.ts';
 import type { BuildOptions } from '/deps/dev/esbuild.ts';
 import esbuildSvelte from '/deps/dev/esbuild-svelte.ts';
 import { sveltePreprocess } from '/deps/dev/svelte-preprocess.ts';
+import { esbuildPluginBrowserslist } from '/deps/dev/esbuild-plugin-browserslist.ts';
+import browserslist from '/deps/dev/browserslist.ts';
 
 export const SRC_DIR = 'src';
 export const PUBLIC_DIR = 'public';
@@ -21,5 +23,6 @@ export const CONFIG: BuildOptions = {
     esbuildSvelte({
       preprocess: sveltePreprocess(),
     }),
+    esbuildPluginBrowserslist(browserslist(), { printUnknownTargets: false }),
   ],
 };

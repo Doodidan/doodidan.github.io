@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "cache": "deno cache deps.cache.ts",
-    "cache:dev": "deno cache deps.dev.cache.ts",
+    "cache": "deno cache --node-modules-dir deps.cache.ts",
+    "cache:dev": "deno cache --node-modules-dir deps.dev.cache.ts",
     "build": "deno task cache && deno run $WATCH --allow-read --allow-write --allow-env --allow-net --allow-run --node-modules-dir ./builder/build.ts",
     "build:dev": "deno task cache:dev && TARGET=development deno task build",
     "serve": "deno run $WATCH --allow-read --allow-net --allow-run ./builder/serve.ts",
