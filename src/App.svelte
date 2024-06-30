@@ -3,5 +3,6 @@
 <style lang="scss">
   h1 {
     background-color: pink;
+    print-color-adjust: exact;
   }
 </style>
