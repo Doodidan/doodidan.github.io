@@ -1,7 +1,9 @@
-import { rm, mkdir, cp, watch } from 'node:fs/promises';
+import { rm, mkdir, cp } from 'node:fs/promises';
 import { context, stop } from 'esbuild';
+import debounce from 'lodash/debounce.js';
 
 import { config } from './config/index.ts';
+import { watchPath, watchPaths } from './utils/watch.ts';
 
 export const build = async () => {
   const { WATCH } = process.env;
@@ -30,18 +32,12 @@ export const build = async () => {
   await update();
 
   if (isWatch) {
-    const watchPath = async (path: string, cb: () => Promise<unknown>) => {
-      const watcher = watch(path, { recursive: true });
-
-      for await (const _event of watcher) {
-        await cb();
-      }
-    };
-
     console.log('Watching for changes...');
+    const updateDebounce = debounce(update, config.DEBOUNCE_DELAY);
+    const rebuildDebounce = debounce(rebuild, config.DEBOUNCE_DELAY);
     const watchers = [
-      ...config.COPY_DIR_LIST.map((path) => watchPath(path, update)),
-      watchPath(config.SRC_DIR, rebuild),
+      ...watchPaths(config.COPY_DIR_LIST, updateDebounce),
+      watchPath(config.SRC_DIR, rebuildDebounce),
     ];
     await Promise.all(watchers);
   }

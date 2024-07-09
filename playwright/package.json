@@ -19,7 +19,7 @@
     "deps": "pnpm i && playwright install --with-deps chromium",
     "build": "tsc",
     "generate-pdf": "node dist/index.js",
-    "main": "pnpm build && pnpm generate-pdf"
+    "start": "pnpm build && pnpm generate-pdf"
   },
   "dependencies": {
     "@types/node": "^20.14.8",

@@ -1,25 +1,25 @@
 import type { Subprocess } from 'bun';
 
 export const dev = () => {
-  const env = {
-    ...process.env,
-    WATCH: '--watch'
-  };
+  const options = {
+    env: {
+      ...process.env,
+      WATCH: '--watch'
+    },
+    stdout: 'inherit',
+    stderr: 'inherit',
+  } as const;
 
   let buildProc: Subprocess | undefined;
   let serveProc: Subprocess | undefined;
   const build = () => Bun.spawn(['bun', 'run', 'build:dev'], {
-    env,
-    stdout: 'inherit',
-    stderr: 'inherit',
+    ...options,
     onExit() {
       buildProc = build();
     },
   });
   const serve = () => Bun.spawn(['bun', 'run', 'serve'], {
-    env,
-    stdout: 'inherit',
-    stderr: 'inherit',
+    ...options,
     onExit() {
       serveProc = serve();
     },
