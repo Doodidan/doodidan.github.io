@@ -3,22 +3,27 @@
   "version": "1.0.0",
   "description": "PDF generator for resume",
   "main": "src/index.ts",
-  "scripts": {
-    "deps": "pnpm i && playwright install --with-deps firefox",
-    "build": "tsc",
-    "generate-pdf": "node dist/index.js",
-    "main": "pnpm build && pnpm generate-pdf"
-  },
+  "type": "module",
+  "license": "MIT",
   "author": {
     "name": "George Romanov",
     "email": "gosha.egorian@gmail.com",
     "url": "https://doodidan.github.io"
   },
-  "license": "MIT",
+  "repository": {
+    "url": "github:doodidan/doodidan.github.io",
+    "directory": "playwright",
+    "type": "git"
+  },
+  "scripts": {
+    "deps": "pnpm i && playwright install --with-deps chromium",
+    "build": "tsc",
+    "generate-pdf": "node dist/index.js",
+    "main": "pnpm build && pnpm generate-pdf"
+  },
   "dependencies": {
     "@types/node": "^20.14.8",
     "playwright": "^1.45.0",
     "typescript": "^5.5.2"
-  },
-  "type": "module"
+  }
 }

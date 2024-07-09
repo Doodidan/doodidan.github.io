@@ -1,0 +1,33 @@
+{
+  "name": "doodidan.github.io",
+  "version": "1.0.0",
+  "description": "Personal resume",
+  "type": "module",
+  "author": {
+    "name": "George Romanov",
+    "email": "gosha.egorian@gmail.com",
+    "url": "https://doodidan.github.io"
+  },
+  "repository": {
+    "url": "github:doodidan/doodidan.github.io",
+    "type": "git"
+  },
+  "scripts": {
+    "build": "bun run $WATCH ./builder/build.ts",
+    "build:dev": "NODE_ENV=development bun run build",
+    "serve": "bun run $WATCH ./builder/serve.ts",
+    "dev": "bun run --watch ./builder/dev.ts"
+  },
+  "dependencies": {
+    "svelte": "^4.2.18"
+  },
+  "devDependencies": {
+    "@types/bun": "1.1.6",
+    "browserslist": "^4.23.1",
+    "esbuild": "^0.21.5",
+    "esbuild-plugin-browserslist": "^0.12.1",
+    "esbuild-svelte": "^0.8.1",
+    "svelte-preprocess": "^6.0.1",
+    "typescript": "^5.5.2"
+  }
+}

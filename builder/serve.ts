@@ -1,22 +1,23 @@
-import { serveDir, serveFile } from '/deps/dev/file-server.ts';
-import { refresh } from '/deps/dev/refresh.ts';
-import { getLocalPath } from './getLocalPath.ts';
+import { join } from 'node:path';
 
-const refreshMiddleware = refresh();
+import { config } from './config/index.ts';
 
-Deno.serve(async (req: Request) => {
-  const refreshRes = refreshMiddleware(req);
-  if (refreshRes) return refreshRes;
+export const serve = () => {
+  return Bun.serve({
+    hostname: 'localhost',
+    port: 8000,
+    async fetch(req) {
+      const url = new URL(req.url);
+      const pathName = `${url.pathname}${url.pathname.endsWith('/') ? 'index.html' : ''}`;
+      const localPath = join(config.DIST_DIR, pathName);
 
-  const pathname = new URL(req.url).pathname;
+      const file = Bun.file(localPath);
 
-  const localPath = await getLocalPath(pathname);
-
-  if (localPath) {
-    return serveFile(req, localPath);
-  }
-
-  return serveDir(req, {
-    fsRoot: 'dist',
+      return new Response(file);
+    },
   });
-});
+};
+
+if (import.meta.main) {
+  serve();
+}

@@ -1,9 +1,9 @@
-import { join } from '/deps/dev/path.ts';
-import type { BuildOptions } from '/deps/dev/esbuild.ts';
-import esbuildSvelte from '/deps/dev/esbuild-svelte.ts';
-import { sveltePreprocess } from '/deps/dev/svelte-preprocess.ts';
-import { esbuildPluginBrowserslist } from '/deps/dev/esbuild-plugin-browserslist.ts';
-import browserslist from '/deps/dev/browserslist.ts';
+import { join } from 'node:path';
+import type { BuildOptions } from 'esbuild';
+import esbuildSvelte from 'esbuild-svelte';
+import { sveltePreprocess } from 'svelte-preprocess';
+import { esbuildPluginBrowserslist } from 'esbuild-plugin-browserslist';
+import browserslist from 'browserslist';
 
 export const SRC_DIR = 'src';
 export const PUBLIC_DIR = 'public';
@@ -19,7 +19,7 @@ export const CONFIG: BuildOptions = {
   splitting: true,
   format: `esm`,
   plugins: [
-    // @ts-expect-error: esbuildSvelte is callable in fact, it's deno-ts error
+    // @ts-expect-error: esbuildSvelte is callable in fact, it's ts error
     esbuildSvelte({
       preprocess: sveltePreprocess(),
     }),
