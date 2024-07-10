@@ -4,34 +4,105 @@ on:
     branches:
     - 'main'
 jobs:
-  build-and-deploy:
-    name: Build and Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
 
-      - name: Install Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.44.4
-
-      - name: Cache Deno
+      - name: Cache Bun
         uses: actions/cache@v4
         env:
-          cache-name: cache-deno-v1
+          cache-name: cache-bun-v1
         with:
-          path: ~/.cache/deno
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('deno.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}
-
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('bun.lockb') }}
+      
+      - name: Deps
+        run: bun i --frozen-lockfile
+      
       - name: Build
-        run: deno task build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        run: bun run build
+      
+      - name: Store build
+        uses: actions/upload-artifact@v4
         with:
-          folder: dist
+          name: dist
+          path: dist
+          if-no-files-found: error
+          retention-days: 1
+          overwrite: true
+
+  playwright:
+    name: Playwright
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+
+      - name: Get PNPM store directory
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache Bun
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-bun-v1
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('bun.lockb') }}
+      - name: Cache PNPM
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-pnpm-v1
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('playwright/pnpm-lock.yaml') }}
+      - name: Cache Playwright
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-playwright-v1
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('playwright/pnpm-lock.yaml') }}
+
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+        
+      - name: Deps
+        run: bun i --frozen-lockfile && cd playwright && pnpm deps
+      
+      - name: PDF
+        run: |
+          bun run serve &
+          cd playwright && pnpm start
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
+          retention-days: 1
+          overwrite: true
+
+  deploy:
+    name: Deploy
+    needs: [build, playwright]
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Upload pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
