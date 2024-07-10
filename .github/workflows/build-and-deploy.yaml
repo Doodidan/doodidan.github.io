@@ -109,7 +109,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/deploy-pages@v4
-        id: deployment
+      - name: Download build
+        uses: actions/download-artifact@v4
         with:
-          artifact_name: dist
+          name: dist
+          path: dist
+      - name: Upload pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy pages
+        uses: actions/deploy-pages@v4
+        id: deployment
