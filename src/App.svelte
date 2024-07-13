@@ -1,10 +1,9 @@
-<script lang="ts"></script>
+<script lang="ts">
+  import MainPage from "./components/MainPage.svelte";
+</script>
 
-<h1>Hello World!</h1>
+<MainPage />
 
 <style lang="postcss">
-  h1 {
-    background-color: pink;
-    print-color-adjust: exact;
-  }
+  @import "./index.css";
 </style>

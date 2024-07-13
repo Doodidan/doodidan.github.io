@@ -6,6 +6,9 @@ import { hotReloadSocketPath } from '../public/development/hot-reload.js';
 import { config } from './config/index.ts';
 import { watchPath } from './utils/watch.ts';
 
+const REGEXP_SPACE = /%20/g;
+const fixSpaces = (str: string) => str.replaceAll(REGEXP_SPACE, ' ');
+
 const hotReloadEvent = 'hot-reload';
 
 export const serve = () => {
@@ -24,7 +27,7 @@ export const serve = () => {
         return;
       }
 
-      const pathName = `${url.pathname}${url.pathname.endsWith('/') ? 'index.html' : ''}`;
+      const pathName = fixSpaces(`${url.pathname}${url.pathname.endsWith('/') ? 'index.html' : ''}`);
       const localPath = join(config.DIST_DIR, pathName);
 
       const file = Bun.file(localPath);
