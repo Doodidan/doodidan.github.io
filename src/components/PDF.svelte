@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-  import { filename } from "../../playwright/src/common-config.ts";
-  export { filename };
+  import { name, filename } from "../../playwright/src/common-config.ts";
+  export { name, filename };
 </script>
 
 <script lang="ts">
@@ -8,6 +8,18 @@
   import Link from "../ui-kit/Link.svelte";
 </script>
 
-<Link href={`./${filename}`}>
-  <Typography>Download PDF</Typography>
-</Link>
+<div class="container">
+  <Link href={`./${filename}`} class="link">
+    <Typography>Download PDF</Typography>
+  </Link>
+</div>
+
+<style lang="postcss">
+  .container {
+    & .link {
+      @media print {
+        display: none;
+      }
+    }
+  }
+</style>

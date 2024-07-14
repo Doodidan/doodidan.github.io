@@ -1,12 +1,14 @@
 <script lang="ts">
-  import packageJson from "../../../package.json";
-  import Typography from "../../ui-kit/Typography.svelte";
-  import Link from "../../ui-kit/Link.svelte";
+  import packageJson from "../../../../package.json";
+  import Typography from "../../../ui-kit/Typography.svelte";
+  import Link from "../../../ui-kit/Link.svelte";
 
-  const regexp = /^github:(\w+?)\//;
-  const account = packageJson.repository.url.match(regexp)[1];
+  const REGEXP_USER = /^github:(\w+?)\//;
+  const account = packageJson.repository.url.match(REGEXP_USER)?.[1];
 </script>
 
-<Link href={`https://github.com/${account}`}>
-  <Typography>GitHub</Typography>
-</Link>
+{#if account !== undefined}
+  <Link href={`https://github.com/${account}`}>
+    <Typography>GitHub</Typography>
+  </Link>
+{/if}

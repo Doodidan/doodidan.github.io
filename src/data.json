@@ -1,0 +1,122 @@
+{
+  "role": "Staff | Senior Frontend Engineer",
+  "address": "Tel-Aviv, Israel",
+  "linkedIn": "doodidan",
+  "brief": "I'm a Senior Frontend Engineer with 11 years of experience in corresponding and related zones. I love to find excellent solutions and make them real. I can work as an independent unit and take an initiative in cooperation.",
+  "skills": [
+    {
+      "title": "JS",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Effector",
+        "Vite",
+        "Nodejs",
+        "Webpack",
+        "Redux",
+        "Svelte"
+      ]
+    },
+    {
+      "title": "CSS3",
+      "skills": [
+        "PostCSS",
+        "SCSS",
+        "SASS",
+        "LESS"
+      ]
+    },
+    "HTML5"
+  ],
+  "experience": {
+    "brief": "I had jobs in 8 companies for 11 years. I'll give top of them below:",
+    "items": [
+      {
+        "company": "Yandex",
+        "location": "Remote",
+        "role": "Senior Frontend Engineer",
+        "start": "2022-11",
+        "end": "2024-07",
+        "brief": "It's the number 1 search engine and the number 2 employer in Russia in 2023.",
+        "keynotes": [
+          "Coded payment sdk for merchants to connect customers and shops",
+          "Performed CI optimization increasing builds speed and lower costs",
+          "Actualized code state: typings upgrade, nodejs update from 12 to 20"
+        ]
+      },
+      {
+        "hide": true,
+        "company": "Bright Data",
+        "location": "Netanya, Israel",
+        "role": "Senior Frontend Engineer",
+        "start": "2024-05",
+        "end": "2024-05"
+      },
+      {
+        "company": "Mindbox",
+        "location": "Remote",
+        "role": "Frontend Tech Lead",
+        "start": "2021-03",
+        "end": "2022-08",
+        "brief": "A leading marketing automation platform in Russia and a teal organization.",
+        "keynotes": [
+          "Made tech stack decisions and coded base components",
+          "Transitioned 3 site partitions to new architecture and design increasing responsiveness and interaction speed",
+          "Hired developers and onboarded new employees"
+        ]
+      },
+      {
+        "company": "HTML Academy",
+        "location": "Remote",
+        "role": "Frontend Tutor",
+        "start": "2015-03",
+        "end": "2021-03",
+        "brief": "HTML Academy - an interactive online courses platform for Web Developers.",
+        "keynotes": [
+          "Tutored more than 100 students within 34 courses of HTML, CSS, JS"
+        ]
+      },
+      {
+        "company": "Dragon Family",
+        "location": "Moscow, Russia",
+        "role": "Frontend | Mobile Engineer",
+        "start": "2018-04",
+        "end": "2019-08",
+        "brief": "Dragon Family Rus is a startup in the field of children's education.",
+        "keynotes": [
+          "Maintained two mobile apps using React Native",
+          "Setted up CI service to build mobile apps",
+          "Developed a set of base components"
+        ]
+      },
+      {
+        "company": "IMHO Design",
+        "location": "Moscow, Russia",
+        "role": "Frontend Engineer",
+        "start": "2011-02",
+        "end": "2014-03"
+      },
+      {
+        "company": "SAMOLET Group",
+        "location": "Moscow, Russia",
+        "role": "Senior Frontend | Mobile Engineer",
+        "start": "2019-10",
+        "end": "2020-03"
+      }
+    ]
+  },
+  "languages": [
+    {
+      "title": "English",
+      "level": "B2"
+    },
+    {
+      "title": "Russian",
+      "level": "native"
+    },
+    {
+      "title": "Hebrew",
+      "level": "Aleph"
+    }
+  ]
+}

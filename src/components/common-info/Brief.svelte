@@ -2,7 +2,9 @@
   import data from "../../data.json";
   import Typography from "../../ui-kit/Typography.svelte";
 
-  const { role } = data;
+  const title = "Brief";
+  const { brief } = data;
 </script>
 
-<Typography>{role}</Typography>
+<Typography level="h2">{title}</Typography>
+<Typography>{brief}</Typography>

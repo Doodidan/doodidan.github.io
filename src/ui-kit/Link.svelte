@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let href: string | undefined;
+  export let href: string;
 </script>
 
-<a {href}><slot /></a>
+<a {href} class={$$props.class}><slot /></a>
