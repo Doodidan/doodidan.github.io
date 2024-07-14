@@ -5,6 +5,8 @@ import { sveltePreprocess } from 'svelte-preprocess';
 import { esbuildPluginBrowserslist } from 'esbuild-plugin-browserslist';
 import browserslist from 'browserslist';
 
+const { TEL } = process.env;
+
 export const DEBOUNCE_DELAY = 50;
 export const SERVER_HOST = 'localhost';
 export const SERVER_PORT = 8000;
@@ -28,4 +30,7 @@ export const CONFIG: BuildOptions = {
     }),
     esbuildPluginBrowserslist(browserslist(), { printUnknownTargets: false }),
   ],
+  define: {
+    user: `{ "tel": "${TEL ?? ''}" }`,
+  },
 };

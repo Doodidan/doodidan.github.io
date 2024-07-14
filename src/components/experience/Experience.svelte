@@ -3,9 +3,11 @@
   import Typography from "../../ui-kit/Typography.svelte";
   import Item from "./Item.svelte";
 
-  const title = "Experience";
   const {
-    experience: { brief, items: rawItems },
+    experience: {
+      title,
+      content: { brief, items: rawItems },
+    },
   } = data;
   const items = rawItems
     .map((item) => ({
@@ -35,6 +37,6 @@
 <Typography level="h2">{title}</Typography>
 <Typography>{brief}</Typography>
 
-{#each items as item}
-  <Item {...item} />
+{#each items as item, index}
+  <Item {...item} isFirst={!index} />
 {/each}

@@ -1,7 +1,8 @@
 <script lang="ts">
   import Typography from "../../ui-kit/Typography.svelte";
 
-  export let hide = false;
+  export let isFirst = false;
+  export let isHidden = false;
   export let company: string | undefined = undefined;
   export let location: string | undefined = undefined;
   export let role: string | undefined = undefined;
@@ -11,7 +12,11 @@
   export let keynotes: string[] | undefined = undefined;
 </script>
 
-{#if hide !== true}
+{#if !isHidden}
+  {#if !isFirst}
+    <hr />
+  {/if}
+
   {#if company !== undefined}
     <Typography>{company}</Typography>
   {/if}

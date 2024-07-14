@@ -2,7 +2,9 @@
   import data from "../../data.json";
   import Typography from "../../ui-kit/Typography.svelte";
 
-  const { role } = data;
+  const {
+    role: { content },
+  } = data;
 </script>
 
-<Typography>{role}</Typography>
+<Typography>{content}</Typography>

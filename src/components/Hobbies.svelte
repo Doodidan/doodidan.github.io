@@ -3,11 +3,9 @@
   import Typography from "../ui-kit/Typography.svelte";
 
   const {
-    languages: { title, content: languages },
+    hobbies: { title, content: hobbies },
   } = data;
 </script>
 
 <Typography level="h2">{title}</Typography>
-<Typography>
-  {languages.map(({ title, level }) => `${title} - ${level}.`).join(" ")}
-</Typography>
+<Typography>{hobbies.join(", ")}</Typography>

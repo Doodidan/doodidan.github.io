@@ -3,7 +3,9 @@
   import Typography from "../../../ui-kit/Typography.svelte";
   import Link from "../../../ui-kit/Link.svelte";
 
-  const { linkedIn: account } = data;
+  const {
+    links: { linkedIn: account },
+  } = data;
   const short = `linkedin.com/in/${account}`;
   const url = `https://www.${short}/`;
 </script>

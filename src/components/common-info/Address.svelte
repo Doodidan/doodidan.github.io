@@ -2,7 +2,9 @@
   import data from "../../data.json";
   import Typography from "../../ui-kit/Typography.svelte";
 
-  const { address } = data;
+  const {
+    address: { content },
+  } = data;
 </script>
 
-<Typography>{address}</Typography>
+<Typography>{content}</Typography>

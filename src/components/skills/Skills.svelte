@@ -1,9 +1,8 @@
 <script lang="ts">
-  import data from "../data.json";
-  import Typography from "../ui-kit/Typography.svelte";
+  import Typography from "../../ui-kit/Typography.svelte";
 
-  const title = "Skills";
-  const { skills } = data;
+  export let title: string;
+  export let skills: (string | { title: string; skills: string[] })[];
 </script>
 
 <Typography level="h2">{title}</Typography>
